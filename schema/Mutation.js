@@ -23,11 +23,12 @@ const Mutation = new GraphQLObjectType({
 				gender: {
 					type: gender
 				},
-				phone: { type: new GraphQLNonNull(GraphQLString) }
+				phone: { type: new GraphQLNonNull(GraphQLString) },
+				imageUrl: {type:GraphQLString}
 			},
 			resolve(parent, args) {
-				let { firstName, lastName, email, phone, gender } = args;
-				return createUser(firstName, lastName, email, phone, gender);
+				let { imageUrl='default.jpg',firstName, lastName, email, phone, gender } = args;
+				return createUser(imageUrl,firstName, lastName, email, phone, gender);
 			}
 		},
 		blockuser: {

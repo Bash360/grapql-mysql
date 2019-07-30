@@ -20,6 +20,7 @@ let gender = new GraphQLEnumType({ name: 'gender', values: { male: { vale: 'male
 const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
+    imageUrl: {type:GraphQLString},
     contactID: { type: GraphQLID },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },

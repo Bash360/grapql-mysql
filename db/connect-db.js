@@ -61,9 +61,13 @@ function getAllUsers() {
 	return new Promise((resolve, reject) => {
 		try {
 			if (db) {
-				db.query('Select * from users', (error, results) => {
+				db.query('Select * from users order by firstName,lastName', (error, results) => {
 					if (error) throw error;
-					resolve(results);
+					if (results.length === 0) {
+						reject("contact empty");
+					} else { 
+						resolve(results);
+					}
 				});
 			} else {
 				throw new Error('cannot connect to database at the moment');
